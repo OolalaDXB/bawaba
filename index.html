@@ -6,15 +6,28 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://bawaba.systems/">
 <meta property="og:title" content="BAWABA · The control and evidence plane for enterprise AI agents">
-<meta property="og:description" content="Default-deny policy, MENA PII tokenization, signed jurisdiction decisions, and a tamper-evident audit chain built for regulatory and audit review. Self-hosted, gateway-neutral.">
+<meta property="og:description" content="Enterprises already run AI agents nobody approved. BAWABA decides what they may do and records verifiable evidence of governed actions — self-hosted, gateway-neutral, inside the client perimeter.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bawaba.systems">
 <meta property="og:image" content="https://bawaba.systems/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://bawaba.systems/og-image.png">
-<meta name="description" content="BAWABA is the gateway-neutral decision and evidence plane for enterprise AI agents: default-deny policy, MENA PII tokenization, signed jurisdiction decisions, and a tamper-evident audit chain built for regulatory and audit review.">
+<meta name="description" content="BAWABA is the self-hosted control and evidence plane for enterprise AI agents: default-deny policy, MENA PII tokenization, signed jurisdiction decisions and a tamper-evident audit chain. Gateway-neutral, inside the client perimeter.">
 <title>BAWABA · The control and evidence plane for enterprise AI agents</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "BAWABA",
+  "url": "https://bawaba.systems",
+  "logo": "https://bawaba.systems/og-image.png",
+  "email": "contact@bawaba.systems",
+  "description": "BAWABA is the self-hosted control and evidence plane for enterprise AI agents: default-deny policy, MENA PII tokenization, signed jurisdiction decisions and a tamper-evident audit chain. Gateway-neutral, running inside the client perimeter without a mandatory external control plane."
+}
+</script>
 <style>
 :root{
   --paper:#F6F4EE; --ink:#232220; --petrole:#143F45; --sable:#E9E4D8; --muted:#6E6A61; --line:#D8D2C4;
@@ -102,19 +115,18 @@ figcaption.caption{font-size:10px}
 </div>
 <div class="spine-caption">Jurisdiction decisions carry Ed25519-signed proofs. Recorded audit events are signed and chained with SHA-256, with one-command server-side verification.</div>
 
-<div class="block" id="product-visuals" style="display:none;margin:34px 0 8px">
+<div class="block" id="product-visuals" style="margin:34px 0 8px">
 <h2>The console</h2>
 <div class="shots-grid">
-<figure data-shot style="margin:0"><img src="console-audit.png" alt="BAWABA console, audit trail with tamper-evident hash chain and server-side verification" style="width:100%;border:1px solid var(--line)"><figcaption class="caption">Audit trail · tamper-evident chain, server-side verification.</figcaption></figure>
-<figure data-shot style="margin:0"><img src="console-routing.png" alt="BAWABA console, jurisdiction routing with signed proof" style="width:100%;border:1px solid var(--line)"><figcaption class="caption">Jurisdiction routing · signed decision and proof.</figcaption></figure>
-<figure data-shot style="margin:0"><img src="console-dashboard.png" alt="BAWABA console, live governance dashboard" style="width:100%;border:1px solid var(--line)"><figcaption class="caption">Live governance dashboard.</figcaption></figure>
+<figure data-shot style="margin:0"><img src="console-audit.png" alt="BAWABA console, audit trail with tamper-evident hash chain and server-side verification" width="1600" height="1008" loading="lazy" decoding="async" style="width:100%;border:1px solid var(--line)"><figcaption class="caption">Audit trail · tamper-evident chain, server-side verification.</figcaption></figure>
+<figure data-shot style="margin:0"><img src="console-routing.png" alt="BAWABA console, jurisdiction routing with signed proof" width="1600" height="1014" loading="lazy" decoding="async" style="width:100%;border:1px solid var(--line)"><figcaption class="caption">Jurisdiction routing · signed decision and proof.</figcaption></figure>
+<figure data-shot style="margin:0"><img src="console-dashboard.png" alt="BAWABA console, live governance dashboard" width="1600" height="811" loading="lazy" decoding="async" style="width:100%;border:1px solid var(--line)"><figcaption class="caption">Live governance dashboard.</figcaption></figure>
 </div>
 <div class="console-note">BAWABA demonstration console · simulated tenants, events and volumes · no customer data.</div>
 </div>
 <script>
 document.querySelectorAll("[data-shot] img").forEach(function(im){
   im.addEventListener("error", function(){ im.closest("figure").style.display="none"; });
-  im.addEventListener("load", function(){ document.getElementById("product-visuals").style.display="block"; });
 });
 
 document.querySelectorAll("[data-shot] img").forEach(function(im){
