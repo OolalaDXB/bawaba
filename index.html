@@ -88,14 +88,14 @@ figcaption.caption{font-size:10px}
 </header>
 
 <h1>The control and evidence plane for enterprise AI agents, and the gateways they run through.</h1>
-<p class="lede">BAWABA decides what agents may do, provides verifiable evidence of how and where data was routed, and is built to make gateway enforcement auditable across regulated environments. Built for banks, government entities and critical infrastructure in MENA and the EU. Designed for self-hosted deployment inside the client perimeter, without a mandatory external control plane.</p>
+<p class="lede">BAWABA decides what agents may do, constrains where sensitive data may go, and records verifiable evidence of governed actions. It runs inside the client perimeter and works across existing gateways, giving enterprises a consistent control and audit layer without a mandatory external control plane. Built for organisations deploying AI agents in sensitive, high-stakes or regulated environments across MENA and Europe.</p>
 
 <div class="spine">
   <div class="stage"><span class="k">Identity</span><div class="q">Who is the agent?</div></div>
   <div class="stage"><span class="k">Policy</span><div class="q">What may it do?</div></div>
-  <div class="stage"><span class="k">Data</span><div class="q">What is sensitive?</div></div>
-  <div class="stage"><span class="k">Jurisdiction</span><div class="q">Where may it go?</div></div>
-  <div class="stage"><span class="k">Evidence</span><div class="q">Can it be proven?</div></div>
+  <div class="stage"><span class="k">Data</span><div class="q">What must be protected?</div></div>
+  <div class="stage"><span class="k">Jurisdiction</span><div class="q">Where may data be processed?</div></div>
+  <div class="stage"><span class="k">Evidence</span><div class="q">Can the decision be proven?</div></div>
 </div>
 <div class="spine-caption">Jurisdiction decisions carry Ed25519-signed proofs. Recorded audit events are signed and chained with SHA-256, with one-command server-side verification.</div>
 
@@ -141,7 +141,7 @@ document.querySelectorAll("[data-shot] img").forEach(function(im){
 
 <div class="block">
 <h2>The problem</h2>
-<p>Enterprises are handing AI agents the keys to their tools, data and APIs. Gateways transport that traffic. None of them answers the question a regulator asks: which policy applied, where did the data go, prove it. EU AI Act obligations are phasing in from August 2026, while GCC data-sovereignty and AI-governance requirements keep strengthening. The selection window for agent governance infrastructure is now. Regulated institutions cannot adopt agents without evidence that withstands audit and regulatory scrutiny.</p>
+<p>Enterprises already run AI agents nobody approved: employees connect Claude, Cursor or ChatGPT to internal systems through MCP gateways that route calls but govern nothing. The enterprise inherits the actions and the liability. The gateway does not answer the questions an auditor or a regulator asks: which agent acted, under which policy, where did the data go, prove it. Under default-deny, an agent nobody registered is an agent that cannot act. EU AI Act obligations are phasing in from August 2026, while GCC data-sovereignty and AI-governance requirements keep strengthening. The selection window for agent governance infrastructure is now.</p>
 </div>
 
 <div class="block modes">
@@ -153,10 +153,10 @@ document.querySelectorAll("[data-shot] img").forEach(function(im){
 <div class="block">
 <h2>Built for regulated environments</h2>
 <ul>
-<li>Gateway-neutral: one consistent decision and evidence layer across every gateway the institution operates, instead of fragmented evidence per vendor.</li>
+<li>Gateway-neutral: the gateway can change, while the decision authority and evidence chain stay the same.</li>
 <li>Cryptographic evidence designed for regulatory and audit review, supported by jurisdiction-specific regulatory mapping: Loi 09-08, SAMA/PDPL, UAE PDPL/DIFC, GDPR/DORA, EU AI Act.</li>
 <li>MENA-specific PII tokenisation in Rust: IBAN MA/FR, CIN, Iqama, Emirates ID, Luhn-validated cards.</li>
-<li>Founder-market access: 22+ years in regulated payments infrastructure, including 14 at SWIFT, spanning relationships across 83 countries.</li>
+<li>Founder-market access: 22+ years in regulated payments infrastructure, including 14 at SWIFT across 83 countries in the Middle East, Africa, the Caucasus and Central Asia.</li>
 </ul>
 </div>
 
