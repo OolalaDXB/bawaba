@@ -46,7 +46,8 @@ h1 em{font-style:italic;color:var(--petrole)}
 .shots-grid figure img{aspect-ratio:1.58;object-fit:cover;object-position:left top;width:100%}
 @media (max-width:900px){.shots-grid{grid-template-columns:1fr}}
 .spine-caption{font-family:'Hanken Grotesk',sans-serif;font-weight:300;font-size:11.5px;color:var(--muted);margin-bottom:26px}
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:6px}
+.cols{display:grid;grid-template-columns:1fr 1fr;column-gap:34px;row-gap:0;grid-template-rows:repeat(3,auto);margin-top:6px}
+.cols>div{display:grid;grid-template-rows:subgrid;grid-row:1 / -1}
 .cols p,.cols li,.truth td{font-size:13.5px;line-height:1.65}
 .caption{font-family:'Hanken Grotesk',sans-serif;font-weight:300;font-size:11.5px;color:var(--muted);margin-top:4px;line-height:1.4}
 .console-note{font-family:'Hanken Grotesk',sans-serif;font-weight:300;font-style:italic;font-size:10.5px;color:var(--muted);margin-top:12px;text-align:center}
@@ -68,7 +69,8 @@ footer{margin-top:26px;border-top:1px solid var(--ink);padding-top:11px;display:
 @media (max-width:700px){
 .page{padding:28px 20px}
 header{flex-direction:column;align-items:flex-start;gap:14px}
-.cols{grid-template-columns:1fr;gap:10px}
+.cols{grid-template-columns:1fr;grid-template-rows:none;gap:10px}
+.cols>div{display:block;grid-row:auto}
 .spine{display:grid;grid-template-columns:1fr 1fr}
 .spine .stage{border-bottom:1px solid var(--line)}
 .spine .stage:last-child{grid-column:1 / -1;border-right:none}
