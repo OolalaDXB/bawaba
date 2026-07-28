@@ -46,10 +46,11 @@ h1 em{font-style:italic;color:var(--petrole)}
 .shots-grid figure img{aspect-ratio:1.58;object-fit:cover;object-position:left top;width:100%}
 @media (max-width:900px){.shots-grid{grid-template-columns:1fr}}
 .spine-caption{font-family:'Hanken Grotesk',sans-serif;font-weight:300;font-size:11.5px;color:var(--muted);margin-bottom:26px}
-.cols{display:grid;grid-template-columns:1fr 1fr;column-gap:34px;row-gap:0;grid-template-rows:repeat(3,auto);margin-top:6px}
+.cols{display:grid;grid-template-columns:1fr 1fr;column-gap:34px;row-gap:0;grid-template-rows:repeat(4,auto);margin-top:6px}
 .cols>div{display:grid;grid-template-rows:subgrid;grid-row:1 / -1}
 .cols p,.cols li,.truth td{font-size:13.5px;line-height:1.65}
 .caption{font-family:'Hanken Grotesk',sans-serif;font-weight:300;font-size:11.5px;color:var(--muted);margin-top:4px;line-height:1.4;text-align:center}
+.source{font-family:'Hanken Grotesk',sans-serif;font-weight:300;font-size:11.5px;color:var(--muted);margin-top:8px;line-height:1.4}
 .console-note{font-family:'Hanken Grotesk',sans-serif;font-weight:300;font-style:italic;font-size:10.5px;color:var(--muted);margin-top:12px;text-align:center}
 .cta{margin-top:48px;text-align:center}
 h2{font-family:'JetBrains Mono',monospace;font-weight:400;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--petrole);border-top:2px solid var(--petrole);padding-top:9px;margin-bottom:9px}
@@ -90,7 +91,7 @@ figcaption.caption{font-size:10px}
 </header>
 
 <h1>The control and evidence plane for enterprise AI agents, and the gateways they run through.</h1>
-<p class="lede">BAWABA decides what agents may do, constrains where sensitive data may go, and records verifiable evidence of governed actions. It runs inside the client perimeter and works across existing gateways, giving enterprises a consistent control and audit layer without a mandatory external control plane. Built for organisations deploying AI agents in sensitive, high-stakes or regulated environments across MENA and Europe.</p>
+<p class="lede">BAWABA decides what agents may do, constrains where sensitive data may go, and records verifiable evidence of governed actions. It runs inside the client perimeter and works across existing gateways, giving enterprises a consistent control and audit layer without a mandatory external control plane. Built for enterprises, public institutions and critical-infrastructure operators deploying AI agents in sensitive or high-stakes environments.</p>
 
 <div class="spine">
   <div class="stage"><span class="k">Identity</span><div class="q">Who is the agent?</div></div>
@@ -143,7 +144,8 @@ document.querySelectorAll("[data-shot] img").forEach(function(im){
 
 <div class="block">
 <h2>The problem</h2>
-<p>Enterprises already run AI agents nobody approved: employees connect Claude, Cursor or ChatGPT to internal systems through MCP gateways that route calls but govern nothing. The enterprise inherits the actions and the liability. The gateway does not answer the questions an auditor or a regulator asks: which agent acted, under which policy, where did the data go, prove it. Under default-deny, an agent nobody registered is an agent that cannot act. EU AI Act obligations are phasing in from August 2026, while GCC data-sovereignty and AI-governance requirements keep strengthening. The selection window for agent governance infrastructure is now.</p>
+<p>AI adoption is already employee-led: 78 percent of AI users bring their own AI tools to work. Enterprises already run AI agents nobody approved: employees connect Claude, Cursor or ChatGPT to internal systems through MCP gateways that route calls but govern nothing. The enterprise inherits the actions and the liability. The gateway does not answer the questions an auditor or a regulator asks: which agent acted, under which policy, where did the data go, prove it. Under default-deny, an agent nobody registered is an agent that cannot act. EU AI Act obligations are phasing in from August 2026, while GCC data-sovereignty and AI-governance requirements keep strengthening. The selection window for agent governance infrastructure is now.</p>
+<p class="source">Source: Microsoft and LinkedIn, 2024 Work Trend Index, 31,000 respondents across 31 countries.</p>
 </div>
 
 <div class="block modes">
@@ -153,7 +155,12 @@ document.querySelectorAll("[data-shot] img").forEach(function(im){
 </div>
 
 <div class="block">
-<h2>Built for regulated environments</h2>
+<h2>Why this architecture</h2>
+<p>Go keeps the control plane lightweight and easy to deploy. Rust handles sensitive data in a memory-safe engine. PostgreSQL gives institutions a familiar and reliable evidence store. Ed25519 signs jurisdiction decisions; SHA-256 links the audit chain. BAWABA runs inside the client perimeter, without a mandatory external control plane. The console shows what is happening, but does not sit inside the cryptographic trust boundary.</p>
+</div>
+
+<div class="block">
+<h2>Why it holds up</h2>
 <ul>
 <li>Gateway-neutral: the gateway can change, while the decision authority and evidence chain stay the same.</li>
 <li>Cryptographic evidence designed for regulatory and audit review, supported by jurisdiction-specific regulatory mapping: Loi 09-08, SAMA/PDPL, UAE PDPL/DIFC, GDPR/DORA, EU AI Act.</li>
