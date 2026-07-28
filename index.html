@@ -33,7 +33,7 @@ header{display:flex;justify-content:space-between;align-items:baseline;border-bo
 .wordmark span{font-weight:400;font-style:italic;color:var(--petrole);letter-spacing:0;margin-left:10px;font-size:20px}
 h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:36px;line-height:1.2;margin:30px 0 12px;max-width:860px}
 h1 em{font-style:italic;color:var(--petrole)}
-.lede{max-width:760px;color:var(--muted);font-size:15px}
+.lede{max-width:860px;color:var(--muted);font-size:15px}
 /* Signature: the decision spine */
 .spine{display:flex;align-items:stretch;margin:26px 0 8px;border:1px solid var(--ink)}
 .spine .stage{flex:1;padding:11px 12px 12px;border-right:1px solid var(--line);background:transparent}
@@ -45,8 +45,12 @@ h1 em{font-style:italic;color:var(--petrole)}
 .shots-grid figure{margin:0 !important}
 .shots-grid figure img{aspect-ratio:1.58;object-fit:cover;object-position:left top;width:100%}
 @media (max-width:900px){.shots-grid{grid-template-columns:1fr}}
-.spine-caption{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.08em;margin-bottom:26px}
+.spine-caption{font-family:'Hanken Grotesk',sans-serif;font-weight:300;font-size:11.5px;color:var(--muted);margin-bottom:26px}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:6px}
+.cols p,.cols li,.truth td{font-size:13.5px;line-height:1.65}
+.caption{font-family:'Hanken Grotesk',sans-serif;font-weight:300;font-size:11.5px;color:var(--muted);margin-top:4px;line-height:1.4}
+.console-note{font-family:'Hanken Grotesk',sans-serif;font-weight:300;font-size:10.5px;color:var(--muted);margin-top:12px}
+.cta{margin-top:48px}
 h2{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--petrole);border-top:1px solid var(--ink);padding-top:9px;margin-bottom:9px}
 .block{margin-bottom:20px}
 .block p{margin-bottom:7px}
@@ -56,7 +60,7 @@ h2{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.22em;t
 ul{list-style:none}
 li{padding-left:14px;position:relative;margin-bottom:5px}
 li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:1px;background:var(--ink)}
-.truth{width:100%;border-collapse:collapse;font-size:12px}
+.truth{width:100%;border-collapse:collapse;font-size:13.5px}
 .truth td{padding:5px 8px 5px 0;vertical-align:top;border-bottom:1px solid var(--line)}
 a:focus-visible{outline:2px solid var(--petrole);outline-offset:3px}
 .truth td:first-child{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;padding-top:7px;color:var(--petrole);width:86px}
@@ -70,7 +74,8 @@ header{flex-direction:column;align-items:flex-start;gap:14px}
 .spine .stage:last-child{grid-column:1 / -1;border-right:none}
 h1{font-size:22px}
 .caption,.spine-caption{font-size:10px}
-figcaption.caption{font-size:10px !important}
+figcaption.caption{font-size:10px}
+.cta{margin-top:28px}
 }
 </style>
 </head>
@@ -97,10 +102,11 @@ figcaption.caption{font-size:10px !important}
 <div class="block" id="product-visuals" style="display:none;margin:34px 0 8px">
 <h2>The console</h2>
 <div class="shots-grid">
-<figure data-shot style="margin:0 0 14px"><img src="console-audit.png" alt="BAWABA console, audit trail with tamper-evident hash chain and server-side verification" style="width:100%;border:1px solid var(--line)"><figcaption class="caption" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:var(--muted);margin-top:4px">Audit trail · tamper-evident chain, one-command server verification. BAWABA demonstration console; all tenants, events, volumes and policy decisions shown are simulated.</figcaption></figure>
-<figure data-shot style="margin:0 0 14px"><img src="console-routing.png" alt="BAWABA console, jurisdiction routing with signed proof" style="width:100%;border:1px solid var(--line)"><figcaption class="caption" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:var(--muted);margin-top:4px">Jurisdiction routing · signed decision and proof. Simulated demonstration data.</figcaption></figure>
-<figure data-shot style="margin:0"><img src="console-dashboard.png" alt="BAWABA console, live governance dashboard" style="width:100%;border:1px solid var(--line)"><figcaption class="caption" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:var(--muted);margin-top:4px">Live governance dashboard. Simulated demonstration data.</figcaption></figure>
+<figure data-shot style="margin:0"><img src="console-audit.png" alt="BAWABA console, audit trail with tamper-evident hash chain and server-side verification" style="width:100%;border:1px solid var(--line)"><figcaption class="caption">Audit trail · tamper-evident chain, server-side verification.</figcaption></figure>
+<figure data-shot style="margin:0"><img src="console-routing.png" alt="BAWABA console, jurisdiction routing with signed proof" style="width:100%;border:1px solid var(--line)"><figcaption class="caption">Jurisdiction routing · signed decision and proof.</figcaption></figure>
+<figure data-shot style="margin:0"><img src="console-dashboard.png" alt="BAWABA console, live governance dashboard" style="width:100%;border:1px solid var(--line)"><figcaption class="caption">Live governance dashboard.</figcaption></figure>
 </div>
+<div class="console-note">BAWABA demonstration console · simulated tenants, events and volumes · no customer data.</div>
 </div>
 <script>
 document.querySelectorAll("[data-shot] img").forEach(function(im){
@@ -120,7 +126,7 @@ document.querySelectorAll("[data-shot] img").forEach(function(im){
     big.style.cssText = "max-width:100%;max-height:88vh;object-fit:contain;box-shadow:0 8px 60px rgba(0,0,0,.5)";
     var cap = document.createElement("div");
     cap.textContent = "BAWABA demonstration console · simulated tenants, events and volumes · no customer data";
-    cap.style.cssText = "font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;color:#D6D3D1;text-align:center";
+    cap.style.cssText = "font-family:'Hanken Grotesk',sans-serif;font-weight:300;font-size:11.5px;color:#D6D3D1;text-align:center";
     wrap.appendChild(big); wrap.appendChild(cap);
     o.appendChild(wrap);
     o.addEventListener("click", function(){ o.remove(); });
@@ -173,8 +179,7 @@ document.querySelectorAll("[data-shot] img").forEach(function(im){
 <div class="block">
 <h2>Design partners</h2>
 <p>BAWABA is in active discussions with two regulated institutions regarding potential 12-week design-partner pilots, and is opening a limited number of additional pilot conversations across the GCC and MENA. The model: paid overlay deployments on the gateway already in place, concluding with an evidence pack for risk and security review.</p>
-<p style="margin-top:10px"><a href="mailto:mickael@bawaba.systems?subject=BAWABA%20design%20partner%20pilot" style="display:inline-block;background:var(--petrole);color:var(--paper);padding:10px 22px;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase">Start the conversation</a></p>
-<p style="margin-top:10px;font-size:11.5px;color:var(--muted)">Programmes and institutional partners: mickael@bawaba.systems.</p>
+<p class="cta"><a href="mailto:contact@bawaba.systems?subject=BAWABA%20demonstration%20request&body=I%20would%20like%20to%20arrange%20a%20demonstration%20of%20BAWABA%20and%20discuss%20a%20potential%20use%20case%20for%20our%20organisation" style="display:inline-block;background:var(--petrole);color:var(--paper);padding:14px 30px;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase">Request a demo</a></p>
 </div>
 
 </div>
@@ -182,7 +187,7 @@ document.querySelectorAll("[data-shot] img").forEach(function(im){
 
 <footer>
   <div>BAWABA · bawaba.systems</div>
-  <div>mickael@bawaba.systems</div>
+  <div>contact@bawaba.systems</div>
 </footer>
 
 </div>
