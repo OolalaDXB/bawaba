@@ -1,0 +1,26 @@
+{
+  "agent": {
+    "id": "claude-code",
+    "registered": true
+  },
+  "decision_id": "dec_2026_ma_0007",
+  "issued_at": "2026-07-28T10:15:33Z",
+  "kind": "jurisdiction_routing",
+  "notice": "DEMONSTRATION DATA - simulated tenant, no customer data.",
+  "policy": {
+    "effect": "allow",
+    "id": "loi-09-08.cndp"
+  },
+  "request": {
+    "data_classes": [
+      "pii.iban.ma",
+      "pii.cin"
+    ],
+    "tool": "database-read"
+  },
+  "routing": {
+    "data_plane": "Casablanca sovereign data plane",
+    "jurisdiction": "MA"
+  },
+  "schema": "bawaba.decision.v1"
+}

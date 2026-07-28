@@ -1,6 +1,13 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/security.txt",
+      "destination": "/.well-known/security.txt",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
