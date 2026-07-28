@@ -62,6 +62,7 @@ h1 em{font-style:italic;color:var(--petrole)}
 .spine .q{font-family:'Cormorant Garamond',serif;font-size:15.5px;font-weight:600;line-height:1.15}
 .shots-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
 .shots-grid figure{margin:0 !important}
+.shots-grid figure picture{display:block}
 .shots-grid figure img{aspect-ratio:1.58;object-fit:cover;object-position:left top;width:100%}
 @media (max-width:900px){.shots-grid{grid-template-columns:1fr}}
 .spine-caption{font-family:'Hanken Grotesk',sans-serif;font-weight:300;font-size:11.5px;color:var(--muted);margin-bottom:26px;text-align:center}
@@ -145,9 +146,9 @@ footer{flex-direction:column;gap:6px;align-items:flex-start}
 <div class="block" id="product-visuals" style="margin:34px 0 30px">
 <h2>The console</h2>
 <div class="shots-grid">
-<figure data-shot style="margin:0"><img src="console-audit.png" alt="BAWABA console, audit trail with tamper-evident hash chain and server-side verification" loading="lazy" decoding="async" style="width:100%;border:1px solid var(--line)"><figcaption class="caption">Audit trail · tamper-evident chain, server-side verification.</figcaption></figure>
-<figure data-shot style="margin:0"><img src="console-routing.png" alt="BAWABA console, jurisdiction routing with signed proof" loading="lazy" decoding="async" style="width:100%;border:1px solid var(--line)"><figcaption class="caption">Jurisdiction routing · signed decision and proof.</figcaption></figure>
-<figure data-shot style="margin:0"><img src="console-dashboard.png" alt="BAWABA console, live governance dashboard" loading="lazy" decoding="async" style="width:100%;border:1px solid var(--line)"><figcaption class="caption">Live governance dashboard.</figcaption></figure>
+<figure data-shot style="margin:0"><picture><source srcset="console-audit.webp" type="image/webp"><img src="console-audit.png" alt="BAWABA console, audit trail with tamper-evident hash chain and server-side verification" loading="lazy" decoding="async" style="width:100%;border:1px solid var(--line)"></picture><figcaption class="caption">Audit trail · tamper-evident chain, server-side verification.</figcaption></figure>
+<figure data-shot style="margin:0"><picture><source srcset="console-routing.webp" type="image/webp"><img src="console-routing.png" alt="BAWABA console, jurisdiction routing with signed proof" loading="lazy" decoding="async" style="width:100%;border:1px solid var(--line)"></picture><figcaption class="caption">Jurisdiction routing · signed decision and proof.</figcaption></figure>
+<figure data-shot style="margin:0"><picture><source srcset="console-dashboard.webp" type="image/webp"><img src="console-dashboard.png" alt="BAWABA console, live governance dashboard" loading="lazy" decoding="async" style="width:100%;border:1px solid var(--line)"></picture><figcaption class="caption">Live governance dashboard.</figcaption></figure>
 </div>
 <div class="console-note">BAWABA demonstration console · simulated tenants, events and volumes · no customer data.</div>
 </div>
@@ -158,22 +159,54 @@ document.querySelectorAll("[data-shot] img").forEach(function(im){
 
 document.querySelectorAll("[data-shot] img").forEach(function(im){
   im.style.cursor = "zoom-in";
-  im.addEventListener("click", function(){
+  im.setAttribute("role", "button");
+  im.setAttribute("tabindex", "0");
+  im.setAttribute("aria-label", "Enlarge screenshot: " + (im.alt || "console screenshot"));
+
+  function open(){
+    var page = document.querySelector(".page");
     var o = document.createElement("div");
+    o.setAttribute("role", "dialog");
+    o.setAttribute("aria-modal", "true");
+    o.setAttribute("aria-label", im.alt || "BAWABA console screenshot");
     o.style.cssText = "position:fixed;inset:0;background:rgba(28,25,23,.94);z-index:50;display:flex;align-items:center;justify-content:center;padding:3vh 3vw;cursor:zoom-out";
     var wrap = document.createElement("div");
-    wrap.style.cssText = "display:flex;flex-direction:column;align-items:center;gap:10px;max-height:100%";
+    wrap.style.cssText = "position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;max-height:100%";
     var big = document.createElement("img");
-    big.src = im.src;
+    big.src = im.currentSrc || im.src; big.alt = im.alt;
     big.style.cssText = "max-width:100%;max-height:88vh;object-fit:contain;box-shadow:0 8px 60px rgba(0,0,0,.5)";
     var cap = document.createElement("div");
     cap.textContent = "BAWABA demonstration console · simulated tenants, events and volumes · no customer data";
     cap.style.cssText = "font-family:'Hanken Grotesk',sans-serif;font-weight:300;font-size:11.5px;color:#D6D3D1;text-align:center";
-    wrap.appendChild(big); wrap.appendChild(cap);
+    var close = document.createElement("button");
+    close.type = "button";
+    close.setAttribute("aria-label", "Close");
+    close.textContent = "✕";
+    close.style.cssText = "position:absolute;top:-8px;right:-8px;width:34px;height:34px;border:none;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;font-size:15px;line-height:34px;cursor:pointer";
+    wrap.appendChild(close); wrap.appendChild(big); wrap.appendChild(cap);
     o.appendChild(wrap);
-    o.addEventListener("click", function(){ o.remove(); });
-    document.addEventListener("keydown", function esc(e){ if(e.key==="Escape"){o.remove();document.removeEventListener("keydown",esc);} });
+    if (page) page.setAttribute("aria-hidden", "true");
     document.body.appendChild(o);
+
+    function shut(){
+      o.remove();
+      document.removeEventListener("keydown", onKey);
+      if (page) page.removeAttribute("aria-hidden");
+      if (im.focus) im.focus();
+    }
+    function onKey(e){
+      if (e.key === "Escape") shut();
+      else if (e.key === "Tab") { e.preventDefault(); close.focus(); }
+    }
+    o.addEventListener("click", function(e){ if (e.target !== close) shut(); });
+    close.addEventListener("click", shut);
+    document.addEventListener("keydown", onKey);
+    close.focus();
+  }
+
+  im.addEventListener("click", open);
+  im.addEventListener("keydown", function(e){
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); }
   });
 });
 </script>
