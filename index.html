@@ -83,7 +83,7 @@ figcaption.caption{font-size:10px !important}
 </header>
 
 <h1>The control and evidence plane for enterprise AI agents, and the gateways they run through.</h1>
-<p class="lede">BAWABA decides what agents may do, proves where data went, and is built to make gateway enforcement auditable across regulated environments. Built for banks, government entities and critical infrastructure in MENA and the EU. Designed for self-hosted deployment inside the client perimeter, without a mandatory external control plane.</p>
+<p class="lede">BAWABA decides what agents may do, provides verifiable evidence of how and where data was routed, and is built to make gateway enforcement auditable across regulated environments. Built for banks, government entities and critical infrastructure in MENA and the EU. Designed for self-hosted deployment inside the client perimeter, without a mandatory external control plane.</p>
 
 <div class="spine">
   <div class="stage"><span class="k">Identity</span><div class="q">Who is the agent?</div></div>
@@ -113,10 +113,16 @@ document.querySelectorAll("[data-shot] img").forEach(function(im){
   im.addEventListener("click", function(){
     var o = document.createElement("div");
     o.style.cssText = "position:fixed;inset:0;background:rgba(28,25,23,.94);z-index:50;display:flex;align-items:center;justify-content:center;padding:3vh 3vw;cursor:zoom-out";
+    var wrap = document.createElement("div");
+    wrap.style.cssText = "display:flex;flex-direction:column;align-items:center;gap:10px;max-height:100%";
     var big = document.createElement("img");
     big.src = im.src;
-    big.style.cssText = "max-width:100%;max-height:100%;box-shadow:0 8px 60px rgba(0,0,0,.5)";
-    o.appendChild(big);
+    big.style.cssText = "max-width:100%;max-height:88vh;object-fit:contain;box-shadow:0 8px 60px rgba(0,0,0,.5)";
+    var cap = document.createElement("div");
+    cap.textContent = "BAWABA demonstration console · simulated tenants, events and volumes · no customer data";
+    cap.style.cssText = "font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;color:#D6D3D1;text-align:center";
+    wrap.appendChild(big); wrap.appendChild(cap);
+    o.appendChild(wrap);
     o.addEventListener("click", function(){ o.remove(); });
     document.addEventListener("keydown", function esc(e){ if(e.key==="Escape"){o.remove();document.removeEventListener("keydown",esc);} });
     document.body.appendChild(o);
@@ -129,22 +135,22 @@ document.querySelectorAll("[data-shot] img").forEach(function(im){
 
 <div class="block">
 <h2>The problem</h2>
-<p>AI agents are a new execution boundary across tools, data and APIs. Gateways transport their traffic; none of them answers the questions a regulator asks: which policy applied, where did the data go, prove it. EU AI Act transparency obligations apply from 2 August 2026, with high-risk obligations following from December 2027: the selection window for agent governance infrastructure is now. Regulated institutions cannot adopt agents without opposable evidence.</p>
+<p>Enterprises are handing AI agents the keys to their tools, data and APIs. Gateways transport that traffic. None of them answers the question a regulator asks: which policy applied, where did the data go, prove it. EU AI Act obligations are phasing in from August 2026, while GCC data-sovereignty and AI-governance requirements keep strengthening. The selection window for agent governance infrastructure is now. Regulated institutions cannot adopt agents without evidence that withstands audit and regulatory scrutiny.</p>
 </div>
 
 <div class="block modes">
 <h2>Two deployment modes</h2>
-<p><b>Overlay.</b> BAWABA runs beside the gateway the institution already operates, open source or commercial. The gateway keeps the traffic; BAWABA makes the decision inline and records the evidence.</p>
+<p><b>Overlay.</b> BAWABA runs beside the gateway the institution already operates, open source or commercial. The gateway keeps transporting traffic; BAWABA provides the decision and evidence layer. Inline gateway integration and signed external-event ingestion are in active development.</p>
 <p><b>Sovereign embedded.</b> A sovereign embedded package is being developed for air-gapped and data-constrained environments, combining decision, enforcement and evidence inside a single perimeter.</p>
 </div>
 
 <div class="block">
 <h2>Built for regulated environments</h2>
 <ul>
-<li>Gateway-neutral: one evidence chain across every gateway, which is what auditors want.</li>
-<li>Cryptographic evidence designed for regulatory and audit review, supported by jurisdiction-specific regulatory mapping: Loi 09-08, SAMA/PDPL, UAE PDPL/DIFC, RGPD/DORA, EU AI Act.</li>
+<li>Gateway-neutral: one consistent decision and evidence layer across every gateway the institution operates, instead of fragmented evidence per vendor.</li>
+<li>Cryptographic evidence designed for regulatory and audit review, supported by jurisdiction-specific regulatory mapping: Loi 09-08, SAMA/PDPL, UAE PDPL/DIFC, GDPR/DORA, EU AI Act.</li>
 <li>MENA-specific PII tokenisation in Rust: IBAN MA/FR, CIN, Iqama, Emirates ID, Luhn-validated cards.</li>
-<li>Founder distribution: 22+ years in regulated payments infrastructure across 83 countries, including 14 at SWIFT.</li>
+<li>Founder-market access: 22+ years in regulated payments infrastructure, including 14 at SWIFT, spanning relationships across 83 countries.</li>
 </ul>
 </div>
 
@@ -167,8 +173,8 @@ document.querySelectorAll("[data-shot] img").forEach(function(im){
 <div class="block">
 <h2>Design partners</h2>
 <p>BAWABA is in active discussions with two regulated institutions regarding potential 12-week design-partner pilots, and is opening a limited number of additional pilot conversations across the GCC and MENA. The model: paid overlay deployments on the gateway already in place, concluding with an evidence pack for risk and security review.</p>
-<p style="margin-top:10px"><a href="mailto:contact@bawaba.systems?subject=BAWABA%20design%20partner%20pilot" style="display:inline-block;background:var(--petrole);color:var(--paper);padding:10px 22px;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase">Start the conversation</a></p>
-<p style="margin-top:10px;font-size:11.5px;color:var(--muted)">Programmes and institutional partners: contact@bawaba.systems.</p>
+<p style="margin-top:10px"><a href="mailto:mickael@bawaba.systems?subject=BAWABA%20design%20partner%20pilot" style="display:inline-block;background:var(--petrole);color:var(--paper);padding:10px 22px;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase">Start the conversation</a></p>
+<p style="margin-top:10px;font-size:11.5px;color:var(--muted)">Programmes and institutional partners: mickael@bawaba.systems.</p>
 </div>
 
 </div>
@@ -176,7 +182,7 @@ document.querySelectorAll("[data-shot] img").forEach(function(im){
 
 <footer>
   <div>BAWABA · bawaba.systems</div>
-  <div>contact@bawaba.systems</div>
+  <div>mickael@bawaba.systems</div>
 </footer>
 
 </div>
