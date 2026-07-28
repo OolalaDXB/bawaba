@@ -20,8 +20,8 @@
   --paper:#F6F4EE; --ink:#232220; --petrole:#143F45; --sable:#E9E4D8; --muted:#6E6A61; --line:#D8D2C4;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--paper);color:var(--ink);font-family:'Hanken Grotesk',sans-serif;font-weight:300;font-size:13px;line-height:1.55}
-.page{max-width:820px;margin:0 auto;padding:56px 60px}
+body{background:var(--paper);color:var(--ink);font-family:'Hanken Grotesk',sans-serif;font-weight:300;font-size:14.5px;line-height:1.6}
+.page{max-width:1120px;margin:0 auto;padding:64px 72px}
 @media print{
   body{background:#fff}
   .page{max-width:none;padding:34px 44px}
@@ -31,9 +31,9 @@ body{background:var(--paper);color:var(--ink);font-family:'Hanken Grotesk',sans-
 header{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--ink);padding-bottom:14px}
 .wordmark{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;letter-spacing:.06em}
 .wordmark span{font-weight:400;font-style:italic;color:var(--petrole);letter-spacing:0;margin-left:10px;font-size:20px}
-h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:27px;line-height:1.22;margin:26px 0 10px;max-width:640px}
+h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:36px;line-height:1.2;margin:30px 0 12px;max-width:860px}
 h1 em{font-style:italic;color:var(--petrole)}
-.lede{max-width:600px;color:var(--muted);font-size:13.5px}
+.lede{max-width:760px;color:var(--muted);font-size:15px}
 /* Signature: the decision spine */
 .spine{display:flex;align-items:stretch;margin:26px 0 8px;border:1px solid var(--ink)}
 .spine .stage{flex:1;padding:11px 12px 12px;border-right:1px solid var(--line);background:transparent}
@@ -41,6 +41,9 @@ h1 em{font-style:italic;color:var(--petrole)}
 .spine .stage:last-child .k{color:var(--sable)}
 .spine .k{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
 .spine .q{font-family:'Cormorant Garamond',serif;font-size:15.5px;font-weight:600;line-height:1.15}
+.shots-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.shots-grid figure{margin:0 !important}
+@media (max-width:900px){.shots-grid{grid-template-columns:1fr}}
 .spine-caption{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.08em;margin-bottom:26px}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:6px}
 h2{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--petrole);border-top:1px solid var(--ink);padding-top:9px;margin-bottom:9px}
@@ -90,6 +93,36 @@ figcaption.caption{font-size:10px !important}
 </div>
 <div class="spine-caption">Jurisdiction decisions carry Ed25519-signed proofs. Recorded audit events are signed and chained with SHA-256, with one-command server-side verification.</div>
 
+<div class="block" id="product-visuals" style="display:none;margin:34px 0 8px">
+<h2>The console</h2>
+<div class="shots-grid">
+<figure data-shot style="margin:0 0 14px"><img src="console-audit.png" alt="BAWABA console, audit trail with tamper-evident hash chain and server-side verification" style="width:100%;border:1px solid var(--line)"><figcaption class="caption" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:var(--muted);margin-top:4px">Audit trail · tamper-evident chain, one-command server verification. BAWABA demonstration console; all tenants, events, volumes and policy decisions shown are simulated.</figcaption></figure>
+<figure data-shot style="margin:0 0 14px"><img src="console-routing.png" alt="BAWABA console, jurisdiction routing with signed proof" style="width:100%;border:1px solid var(--line)"><figcaption class="caption" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:var(--muted);margin-top:4px">Jurisdiction routing · signed decision and proof. Simulated demonstration data.</figcaption></figure>
+<figure data-shot style="margin:0"><img src="console-dashboard.png" alt="BAWABA console, live governance dashboard" style="width:100%;border:1px solid var(--line)"><figcaption class="caption" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:var(--muted);margin-top:4px">Live governance dashboard. Simulated demonstration data.</figcaption></figure>
+</div>
+</div>
+<script>
+document.querySelectorAll("[data-shot] img").forEach(function(im){
+  im.addEventListener("error", function(){ im.closest("figure").style.display="none"; });
+  im.addEventListener("load", function(){ document.getElementById("product-visuals").style.display="block"; });
+});
+
+document.querySelectorAll("[data-shot] img").forEach(function(im){
+  im.style.cursor = "zoom-in";
+  im.addEventListener("click", function(){
+    var o = document.createElement("div");
+    o.style.cssText = "position:fixed;inset:0;background:rgba(28,25,23,.94);z-index:50;display:flex;align-items:center;justify-content:center;padding:3vh 3vw;cursor:zoom-out";
+    var big = document.createElement("img");
+    big.src = im.src;
+    big.style.cssText = "max-width:100%;max-height:100%;box-shadow:0 8px 60px rgba(0,0,0,.5)";
+    o.appendChild(big);
+    o.addEventListener("click", function(){ o.remove(); });
+    document.addEventListener("keydown", function esc(e){ if(e.key==="Escape"){o.remove();document.removeEventListener("keydown",esc);} });
+    document.body.appendChild(o);
+  });
+});
+</script>
+
 <div class="cols">
 <div>
 
@@ -104,20 +137,8 @@ figcaption.caption{font-size:10px !important}
 <p><b>Sovereign embedded.</b> A sovereign embedded package is being developed for air-gapped and data-constrained environments, combining decision, enforcement and evidence inside a single perimeter.</p>
 </div>
 
-<div class="block" id="product-visuals" style="display:none">
-<h2>The console</h2>
-<figure data-shot style="margin:0 0 14px"><img src="console-audit.png" alt="BAWABA console, audit trail with tamper-evident hash chain and server-side verification" style="width:100%;border:1px solid var(--line)"><figcaption class="caption" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:var(--muted);margin-top:4px">Audit trail · tamper-evident chain, one-command server verification. BAWABA demonstration console; all tenants, events, volumes and policy decisions shown are simulated.</figcaption></figure>
-<figure data-shot style="margin:0 0 14px"><img src="console-routing.png" alt="BAWABA console, jurisdiction routing with signed proof" style="width:100%;border:1px solid var(--line)"><figcaption class="caption" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:var(--muted);margin-top:4px">Jurisdiction routing · signed decision and proof. Simulated demonstration data.</figcaption></figure>
-<figure data-shot style="margin:0"><img src="console-dashboard.png" alt="BAWABA console, live governance dashboard" style="width:100%;border:1px solid var(--line)"><figcaption class="caption" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:var(--muted);margin-top:4px">Live governance dashboard. Simulated demonstration data.</figcaption></figure>
-</div>
-<script>
-document.querySelectorAll("[data-shot] img").forEach(function(im){
-  im.addEventListener("error", function(){ im.closest("figure").style.display="none"; });
-  im.addEventListener("load", function(){ document.getElementById("product-visuals").style.display="block"; });
-});
-</script>
 <div class="block">
-<h2>Why it is defensible</h2>
+<h2>Built for regulated environments</h2>
 <ul>
 <li>Gateway-neutral: one evidence chain across every gateway, which is what auditors want.</li>
 <li>Cryptographic evidence designed for regulatory and audit review, supported by jurisdiction-specific regulatory mapping: Loi 09-08, SAMA/PDPL, UAE PDPL/DIFC, RGPD/DORA, EU AI Act.</li>
