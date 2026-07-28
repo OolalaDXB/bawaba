@@ -12,7 +12,7 @@
 <meta property="og:image" content="https://bawaba.systems/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://bawaba.systems/og-image.png">
-<meta name="description" content="BAWABA is the self-hosted control and evidence plane for enterprise AI agents: default-deny policy, MENA PII tokenization, signed jurisdiction decisions and a tamper-evident audit chain. Gateway-neutral, inside the client perimeter.">
+<meta name="description" content="BAWABA is the self-hosted control and evidence plane for enterprise AI agents: default-deny policy, MENA PII tokenization, signed jurisdiction decisions and a tamper-evident audit chain. Gateway-neutral, running entirely within the client perimeter.">
 <title>BAWABA · The control and evidence plane for enterprise AI agents</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +25,7 @@
   "url": "https://bawaba.systems",
   "logo": "https://bawaba.systems/og-image.png",
   "email": "contact@bawaba.systems",
-  "description": "BAWABA is the self-hosted control and evidence plane for enterprise AI agents: default-deny policy, MENA PII tokenization, signed jurisdiction decisions and a tamper-evident audit chain. Gateway-neutral, running inside the client perimeter without a mandatory external control plane."
+  "description": "BAWABA is the self-hosted control and evidence plane for enterprise AI agents: default-deny policy, MENA PII tokenization, signed jurisdiction decisions and a tamper-evident audit chain. Gateway-neutral, running entirely within the client perimeter, under the institution's sole control."
 }
 </script>
 <style>
@@ -124,7 +124,7 @@ footer{flex-direction:column;gap:6px;align-items:flex-start}
 </header>
 
 <h1>The control and evidence plane for enterprise AI agents, and the gateways they run through.</h1>
-<p class="lede">BAWABA decides what agents may do, constrains where sensitive data may go, and records verifiable evidence of governed actions. It runs inside the client perimeter and works across existing gateways, giving enterprises a consistent control and audit layer without a mandatory external control plane. Built for enterprises, public institutions and critical-infrastructure operators deploying AI agents in sensitive or high-stakes environments.</p>
+<p class="lede">BAWABA decides what agents may do, constrains where sensitive data may go, and records verifiable evidence of governed actions. It runs inside the client perimeter and works across existing gateways, giving enterprises a consistent control and audit layer entirely within their own perimeter. Built for enterprises, public institutions and critical-infrastructure operators deploying AI agents in sensitive or high-stakes environments.</p>
 
 <div class="spine">
   <div class="stage"><span class="k">Identity</span><div class="q">Who is the agent?</div></div>
@@ -188,7 +188,7 @@ document.querySelectorAll("[data-shot] img").forEach(function(im){
 
 <div class="block">
 <h2>Why this architecture</h2>
-<p>Go keeps the control plane lightweight and easy to deploy. Rust handles sensitive data in a memory-safe engine. PostgreSQL gives institutions a familiar and reliable evidence store. Ed25519 signs jurisdiction decisions; SHA-256 links the audit chain. BAWABA runs inside the client perimeter, without a mandatory external control plane. The console shows what is happening, but does not sit inside the cryptographic trust boundary.</p>
+<p>Go keeps the control plane lightweight and easy to deploy. Rust handles sensitive data in a memory-safe engine. PostgreSQL gives institutions a familiar and reliable evidence store. Ed25519 signs jurisdiction decisions; SHA-256 links the audit chain. BAWABA runs entirely within the client perimeter, under the institution's sole control. The console observes; the cryptographic trust boundary stays server-side, independent of it.</p>
 </div>
 
 <div class="block">
